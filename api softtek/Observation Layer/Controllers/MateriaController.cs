@@ -1,18 +1,19 @@
 ﻿using api_softtek.Common_Layer.DTOs;
 using api_softtek.Common_Layer.Interfaces;
+using api_softtek.Top_Layer.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
-namespace api_softtek.Top_Layer.Controllers
+namespace api_softtek.Observation_Layer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EstudianteController : ControllerBase
+    public class MateriaController : ControllerBase
     {
-        private readonly IEstudianteService _service;
 
-        public EstudianteController(IEstudianteService service)
+        private readonly IMateriaService _service;
+
+        public MateriaController(IMateriaService service)
         {
 
             _service = service;
@@ -21,15 +22,15 @@ namespace api_softtek.Top_Layer.Controllers
 
         [HttpPost]
 
-        public IActionResult Post([FromBody] CarreraDto entity)
+        public IActionResult Post([FromBody] MateriaDto entity)
         {
 
-            if(entity == null)
+            if (entity == null)
             {
                 return NoContent();
             }
 
-            int result = _service.CreateEstudiante(entity);
+            int result = _service.CreateMateria(entity);
 
             return Ok(result);
         }
@@ -40,7 +41,7 @@ namespace api_softtek.Top_Layer.Controllers
         public IActionResult GetAll()
         {
 
-            return Ok(_service.GetAllEstudiantes());
+            return Ok(_service.GetAllMaterias());
 
         }
 
@@ -49,31 +50,31 @@ namespace api_softtek.Top_Layer.Controllers
 
         public IActionResult GetById(int id)
         {
-           var x = _service.GetEstudianteById(id);
-        
-            if(x == null)
-            {
-                return NotFound();
-            }
-        
-            return Ok(x);
-        }
-
-        [HttpPut]
-
-        public IActionResult Update([FromBody] CarreraDto entity)
-        {
-
-            var x = _service.GetEstudianteById(entity.Id);
+            var x = _service.GetMateriaById(id);
 
             if (x == null)
             {
                 return NotFound();
             }
 
-            _service.UpdateEstudiante(entity);
+            return Ok(x);
+        }
 
-           
+        [HttpPut]
+
+        public IActionResult Update([FromBody] MateriaDto entity)
+        {
+
+            var x = _service.GetMateriaById(entity.Id);
+
+            if (x == null)
+            {
+                return NotFound();
+            }
+
+            _service.UpdateMateria(entity);
+
+
 
             return Ok(entity);
 
@@ -83,15 +84,17 @@ namespace api_softtek.Top_Layer.Controllers
 
         public IActionResult Delete(int id)
         {
-            var x =_service.DeleteEstudiante(id);
+            var x = _service.DeleteMateria(id);
 
-            if(x == false)
+            if (x == false)
             {
                 return NotFound();
             }
 
             return Ok(x);
         }
+
+
 
     }
 }

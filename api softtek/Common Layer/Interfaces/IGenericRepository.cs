@@ -1,4 +1,5 @@
-﻿using api_softtek.DAL;
+﻿using api_softtek.Common_Layer.Models;
+using api_softtek.DAL;
 
 namespace api_softtek.Common_Layer.Interfaces
 {
@@ -16,6 +17,8 @@ namespace api_softtek.Common_Layer.Interfaces
         public bool Delete(int id);
 
         public void SaveChanges();
+
+        public List<T> ListById(Func<T, bool> condition);
 
     }
 }

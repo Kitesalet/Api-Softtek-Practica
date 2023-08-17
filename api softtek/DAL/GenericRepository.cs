@@ -1,4 +1,5 @@
 ﻿using api_softtek.Common_Layer.Interfaces;
+using api_softtek.Common_Layer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace api_softtek.DAL
@@ -21,16 +22,26 @@ namespace api_softtek.DAL
 
             _context.SaveChanges();
 
-            return 1;
+            return entity.Id;
 
         }
+
+        public List<T> ListById(Func<T,bool> condition)
+        {
+
+            var x = _context.Set<T>().Where(condition).ToList();
+
+            return x;
+
+        }
+        
 
         public bool Delete(int id)
         {
 
             
 
-            T obj = _context.Set<T>().Find(id);
+            T obj = _context.Set<T>().FirstOrDefault(c => c.Id == id);
 
             if(obj == null)
             {
@@ -82,5 +93,7 @@ namespace api_softtek.DAL
 
 
         }
+
+      
     }
 }

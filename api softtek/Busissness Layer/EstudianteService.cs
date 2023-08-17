@@ -1,6 +1,7 @@
 ﻿using api_softtek.Common_Layer.DTOs;
 using api_softtek.Common_Layer.Interfaces;
 using api_softtek.Common_Layer.Models;
+using api_softtek.Top_Layer.Controllers;
 using AutoMapper;
 
 namespace api_softtek.Busissness_Layer
@@ -19,7 +20,7 @@ namespace api_softtek.Busissness_Layer
 
 
         }
-        public int CreateEstudiante(CarreraDto estudiante)
+        public int CreateEstudiante(EstudianteDto estudiante)
         {
            
             var est = _mapper.Map<Estudiante>(estudiante);   
@@ -36,25 +37,25 @@ namespace api_softtek.Busissness_Layer
 
         }
 
-        public List<CarreraDto> GetAllEstudiantes()
+        public List<EstudianteDto> GetAllEstudiantes()
         {
             var est = _repository.GetAll();
 
-            var newEst = _mapper.Map<List<CarreraDto>>(est);
+            var newEst = _mapper.Map<List<EstudianteDto>>(est);
 
             return newEst;
 
 
         }
 
-        public CarreraDto GetEstudianteById(int id)
+        public EstudianteDto GetEstudianteById(int id)
         {
             var est = _repository.GetById(id);
 
-            return _mapper.Map<CarreraDto>(est);
+            return _mapper.Map<EstudianteDto>(est);
         }
 
-        public CarreraDto UpdateEstudiante(CarreraDto estudiante)
+        public EstudianteDto UpdateEstudiante(EstudianteDto estudiante)
         {
 
             var est = _mapper.Map<Estudiante>(estudiante);

@@ -9,9 +9,9 @@ namespace api_softtek.Common_Layer.Interfaces
 
         public CarreraDto GetCarreraById(int id);
 
-        public int CreateCarrera(CarreraDto estudiante);
+        public int CreateCarrera(CarreraDto carrera);
 
-        public CarreraDto UpdateCarrera(CarreraDto estudiante);
+        public CarreraDto UpdateCarrera(CarreraDto carrera);
 
         public bool DeleteCarrera(int id);
 

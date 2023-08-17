@@ -16,7 +16,6 @@ namespace api_softtek.Common_Layer.Models
         public int MateriaId { get; set; }
         public Materia Materia { get; set; }
 
-       
         public int Calificacion { get; set; }
     }
 }
