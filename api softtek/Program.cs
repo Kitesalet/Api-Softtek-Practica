@@ -17,11 +17,13 @@ builder.Services.AddScoped<IEstudianteService,EstudianteService>();
 builder.Services.AddScoped<ICarreraService,CarreraService>();   
 builder.Services.AddScoped<IMateriaService,MateriaService>();
 builder.Services.AddScoped<INotaService, NotaService>();
+builder.Services.AddScoped<IProfesorService, ProfesorService>();
 
 builder.Services.AddScoped<IGenericRepository<Estudiante>, GenericRepository<Estudiante>>();    
 builder.Services.AddScoped<IGenericRepository<Carrera>, GenericRepository<Carrera>>();
 builder.Services.AddScoped<IGenericRepository<Materia>, GenericRepository<Materia>>();
 builder.Services.AddScoped<IGenericRepository<Nota>, GenericRepository<Nota>>();
+builder.Services.AddScoped<IGenericRepository<Profesor>, GenericRepository<Profesor>>();
 
 builder.Services.AddAutoMapper(typeof(Mapper)); // Scan for profiles in the assembly
 

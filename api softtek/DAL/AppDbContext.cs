@@ -13,9 +13,9 @@ namespace api_softtek.DAL
         }
 
 
-       public DbSet<Carrera> Carreras { get; set; }
+        public DbSet<Carrera> Carreras { get; set; }
 
-       public DbSet<Estudiante> Estudiantes { get; set; }
+        public DbSet<Estudiante> Estudiantes { get; set; }
 
         public DbSet<Materia> Materias { get; set; }
 

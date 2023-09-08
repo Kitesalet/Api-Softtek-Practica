@@ -25,6 +25,20 @@ namespace api_softtek.Busissness_Layer
             
             var x = _mapper.Map<Carrera>(carrera);
 
+            List<Estudiante> estudiantes = new List<Estudiante>();
+
+            foreach(var y in carrera.EstudiantesId)
+            {
+                var est = _repoEst.GetById(y);
+
+                if(est != null)
+                {
+                    estudiantes.Add(est);
+                }
+            }
+
+            x.Estudiantes = estudiantes.ToList();
+
             _repository.Create(x);
 
             return x.Id;
@@ -34,9 +48,7 @@ namespace api_softtek.Busissness_Layer
         public bool DeleteCarrera(int id)
         {
 
-            _repository.Delete(id);
-
-            return true;
+            return _repository.Delete(id);
 
         }
 
@@ -50,7 +62,7 @@ namespace api_softtek.Busissness_Layer
             foreach(var carrera in mapeadas)
             {
 
-                var estId = _repoEst.ListById(e => e.Id == carrera.Id).Select(e => e.Id).ToList();
+                var estId = _repoEst.ListById(e => e.Id == carrera.Id).Select(e => e.CarreraId).ToList();
 
                 carrera.EstudiantesId = estId;
 
