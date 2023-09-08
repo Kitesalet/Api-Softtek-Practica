@@ -18,7 +18,7 @@ namespace api_softtek.DAL
         public int Create(T entity)
         {
            
-           _context.Add(entity);
+            _context.Add(entity);
 
             _context.SaveChanges();
 
@@ -84,13 +84,11 @@ namespace api_softtek.DAL
 
             _context.Entry(x).State = EntityState.Detached;
 
-
             _context.Update(entity);
 
             _context.SaveChanges();
 
             return true;
-
 
         }
 

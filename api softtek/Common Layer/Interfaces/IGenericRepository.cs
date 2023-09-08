@@ -3,7 +3,7 @@ using api_softtek.DAL;
 
 namespace api_softtek.Common_Layer.Interfaces
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T> 
     {
 
         public IEnumerable<T> GetAll();
